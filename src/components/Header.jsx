@@ -59,17 +59,25 @@ const Header = () => {
             {currentUser ? (
               <div className="flex items-center space-x-4">
                 <div className="relative group">
-                  <div className="flex items-center cursor-pointer">
-                    <div className="h-8 w-8 bg-indigo-100 rounded-full flex items-center justify-center">
-                      <span className="text-indigo-700 font-medium">
-                        {currentUser.username.charAt(0).toUpperCase()}
+                  {/* Extended hover area with padding */}
+                  <div className="py-2 -my-2 px-2 -mx-2">
+                    <div className="flex items-center cursor-pointer">
+                      <div className="h-8 w-8 bg-indigo-100 rounded-full flex items-center justify-center">
+                        <span className="text-indigo-700 font-medium">
+                          {currentUser.username.charAt(0).toUpperCase()}
+                        </span>
+                      </div>
+                      <span className="ml-2 text-gray-700 hidden lg:inline">
+                        Welcome, {currentUser.username}
                       </span>
                     </div>
-                    <span className="ml-2 text-gray-700 hidden lg:inline">
-                      Welcome, {currentUser.username}
-                    </span>
                   </div>
-                  <div className="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg py-1 hidden group-hover:block z-20">
+
+                  {/* Invisible bridge to connect to dropdown */}
+                  <div className="absolute inset-0 -bottom-2 pointer-events-none"></div>
+
+                  {/* Adjusted dropdown position */}
+                  <div className="absolute right-0 top-full mt-0 w-48 bg-white rounded-lg shadow-lg py-1 hidden group-hover:block z-20">
                     <button
                       onClick={handleLogout}
                       className="w-full text-left px-4 py-2 text-gray-700 hover:bg-gray-100 flex items-center"

@@ -1,6 +1,10 @@
 # Final Project - React + Vite
 
-To Run The Project: npm install -> npm run dev
+                                To run the project locally:
+
+                            Run npm install to install dependencies.
+
+                    Then run npm run dev to start the development server.
 
 > ✅ I confirm that I completed the entire project by myself and did not seek help from anyone.  
 > 🕑 I completed the assignment at 2 AM. I just need to deploy it on GitHub and submit it by 4 PM.
