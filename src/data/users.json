@@ -1,0 +1,7 @@
+// The code not used
+
+[
+  { "id": 1, "email": "john@example.com", "password": "123456" },
+  { "id": 2, "email": "jane@example.com", "password": "abcdef" },
+  { "id": 3, "email": "mike@example.com", "password": "password" }
+]

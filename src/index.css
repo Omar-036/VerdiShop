@@ -1,0 +1,97 @@
+@import "tailwindcss";
+@plugin "flowbite/plugin";
+@source "../node_modules/flowbite";
+
+@import "flowbite/src/themes/default";
+
+/* * {
+  font-size: 62.5%;
+}
+
+* {
+  @media (max-width: 992px) {
+    font-size: 50%;
+  }
+}
+
+* {
+  @media (max-width: 768px) {
+    font-size: 37.5%;
+  }
+} */
+
+* {
+  @media (max-width: 340px) {
+    font-size: 93.75%; /* 15px */
+  }
+}
+
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f9fafb;
+}
+
+.loader {
+  border-top-color: #4f46e5;
+  animation: spinner 0.8s linear infinite;
+}
+
+@keyframes spinner {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.product-card {
+  transition: all 0.3s ease;
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.btn-primary {
+  background-color: #4f46e5;
+  transition: background-color 0.3s;
+}
+
+.btn-primary:hover {
+  background-color: #4338ca;
+}
+
+.toast {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  padding: 12px 24px;
+  border-radius: 8px;
+  background-color: #10b981;
+  color: white;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  z-index: 1000;
+  animation: slideIn 0.3s, fadeOut 0.5s 2.5s;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
