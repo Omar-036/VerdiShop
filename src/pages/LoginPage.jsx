@@ -35,7 +35,7 @@ const LoginPage = () => {
       } else {
         localStorage.removeItem("rememberedEmail");
       }
-      navigate("/");
+      navigate("/cart");
     } else {
       setError("Invalid email or password");
     }

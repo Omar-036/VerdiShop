@@ -3,7 +3,10 @@ import { Link } from "react-router-dom";
 import { useCart } from "../context/CartContext";
 
 const ProductCard = ({ product }) => {
-  const { addToCart } = useCart();
+  const { addToCart, cartItems } = useCart();
+
+  const cartItem = cartItems.find((item) => item.id === product.id);
+  const quantity = cartItem ? cartItem.quantity : 0;
 
   const handleAddToCart = (e) => {
     e.preventDefault();
@@ -44,7 +47,7 @@ const ProductCard = ({ product }) => {
           </div>
         </div>
 
-        <div className="mt-4">
+        <div className="mt-4 relative">
           <button
             onClick={handleAddToCart}
             className="w-full bg-gray-100 hover:bg-indigo-600 hover:text-white text-indigo-600 font-medium py-2 rounded-lg transition duration-300 flex items-center justify-center"
@@ -59,6 +62,13 @@ const ProductCard = ({ product }) => {
             </svg>
             Add to Cart
           </button>
+
+          {/* الدائرة الصغيرة بجانب زر الإضافة */}
+          {quantity > 0 && (
+            <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full h-6 w-6 flex items-center justify-center">
+              {quantity}
+            </span>
+          )}
         </div>
       </div>
     </Link>

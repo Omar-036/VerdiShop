@@ -45,9 +45,9 @@ function App() {
   };
 
   return (
-    <AuthProvider>
-      <CartProvider showToast={showToast}>
-        <Router>
+    <CartProvider showToast={showToast}>
+      <AuthProvider>
+        <Router basename="/">
           <div className="min-h-screen flex flex-col bg-gray-50">
             <Header />
 
@@ -81,8 +81,8 @@ function App() {
             <Footer />
           </div>
         </Router>
-      </CartProvider>
-    </AuthProvider>
+      </AuthProvider>
+    </CartProvider>
   );
 }
 

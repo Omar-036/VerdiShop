@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link, useParams, useNavigate } from "react-router-dom";
 import { useCart } from "../context/CartContext";
+import ProductCard from "../components/ProductCard";
 
 const ProductDetailPage = () => {
   const { id } = useParams();
@@ -181,30 +182,32 @@ const ProductDetailPage = () => {
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {relatedProducts.map((product) => (
-              <div
-                key={product.id}
-                className="bg-white rounded-lg shadow-md overflow-hidden"
-              >
-                <Link to={`/product/${product.id}`}>
-                  <div className="h-48 flex items-center justify-center p-4 bg-gray-50">
-                    <img
-                      src={product.image}
-                      alt={product.title}
-                      className="max-h-full max-w-full object-contain"
-                    />
-                  </div>
-                  <div className="p-4">
-                    <h3 className="font-semibold text-gray-800 truncate">
-                      {product.title}
-                    </h3>
-                    <div className="mt-2 flex justify-between items-center">
-                      <span className="text-lg font-bold text-indigo-600">
-                        ${product.price.toFixed(2)}
-                      </span>
-                    </div>
-                  </div>
-                </Link>
-              </div>
+              <ProductCard key={product.id} product={product} />
+
+              // <div
+              //   key={product.id}
+              //   className="bg-white rounded-lg shadow-md overflow-hidden"
+              // >
+              //   <Link to={`/product/${product.id}`}>
+              //     <div className="h-48 flex items-center justify-center p-4 bg-gray-50">
+              //       <img
+              //         src={product.image}
+              //         alt={product.title}
+              //         className="max-h-full max-w-full object-contain"
+              //       />
+              //     </div>
+              //     <div className="p-4">
+              //       <h3 className="font-semibold text-gray-800 truncate">
+              //         {product.title}
+              //       </h3>
+              //       <div className="mt-2 flex justify-between items-center">
+              //         <span className="text-lg font-bold text-indigo-600">
+              //           ${product.price.toFixed(2)}
+              //         </span>
+              //       </div>
+              //     </div>
+              //   </Link>
+              // </div>
             ))}
           </div>
         </div>

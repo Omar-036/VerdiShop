@@ -9,14 +9,13 @@ import React, {
 const CartContext = createContext();
 
 export function CartProvider({ children, showToast }) {
-  const [cartItems, setCartItems] = useState([]);
-
-  useEffect(() => {
-    const savedCart = localStorage.getItem("cart");
-    if (savedCart) {
-      setCartItems(JSON.parse(savedCart));
+  const [cartItems, setCartItems] = useState(() => {
+    if (typeof window !== "undefined") {
+      const savedCart = localStorage.getItem("cart");
+      return savedCart ? JSON.parse(savedCart) : [];
     }
-  }, []);
+    return [];
+  });
 
   useEffect(() => {
     localStorage.setItem("cart", JSON.stringify(cartItems));

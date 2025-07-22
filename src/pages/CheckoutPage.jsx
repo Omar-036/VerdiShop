@@ -194,6 +194,64 @@ const CheckoutPage = () => {
       </div>
 
       <div className="flex flex-col lg:flex-row gap-8">
+        <div className="lg:w-1/3">
+          <div className="bg-white rounded-xl shadow-sm p-6 sticky top-24">
+            <h2 className="text-xl font-bold text-gray-800 mb-6">
+              Order Summary
+            </h2>
+
+            <div className="space-y-4 mb-6">
+              <div className="flex justify-between">
+                <span className="text-gray-600">Subtotal</span>
+                <span className="font-medium">${calculateTotal}</span>
+              </div>
+              <div className="flex justify-between">
+                <span className="text-gray-600">Shipping</span>
+                <span className="font-medium">$5.00</span>
+              </div>
+              <div className="flex justify-between">
+                <span className="text-gray-600">Discount</span>
+                <span className="font-medium text-green-600">-$0.00</span>
+              </div>
+              <div className="border-t border-gray-200 pt-4 flex justify-between text-lg font-bold">
+                <span>Total</span>
+                <span>${(parseFloat(calculateTotal) + 5.0).toFixed(2)}</span>
+              </div>
+            </div>
+
+            <h3 className="font-semibold text-gray-800 mb-4">
+              Products ({cartItems.length})
+            </h3>
+
+            <div className="space-y-4 max-h-78 overflow-y-auto pr-2">
+              {cartItems.map((item) => (
+                <div
+                  key={item.id}
+                  className="flex items-center border-b border-gray-100 pb-4"
+                >
+                  <div className="w-16 h-16 flex-shrink-0 bg-gray-100 rounded-lg flex items-center justify-center">
+                    <img
+                      src={item.image}
+                      alt={item.title}
+                      className="w-12 h-12 object-contain"
+                    />
+                  </div>
+                  <div className="ml-4 flex-1">
+                    <h4 className="font-medium text-gray-800 truncate">
+                      {item.title}
+                    </h4>
+                    <p className="text-gray-600">
+                      ${item.price.toFixed(2)} × {item.quantity}
+                    </p>
+                  </div>
+                  <div className="font-medium text-gray-800">
+                    ${(item.price * item.quantity).toFixed(2)}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
         <div className="lg:w-2/3">
           <form onSubmit={handleSubmit} className="space-y-8">
             <div className="bg-white rounded-xl shadow-sm p-6">
@@ -448,65 +506,6 @@ const CheckoutPage = () => {
               </button>
             </div>
           </form>
-        </div>
-
-        <div className="lg:w-1/3">
-          <div className="bg-white rounded-xl shadow-sm p-6 sticky top-24">
-            <h2 className="text-xl font-bold text-gray-800 mb-6">
-              Order Summary
-            </h2>
-
-            <div className="space-y-4 mb-6">
-              <div className="flex justify-between">
-                <span className="text-gray-600">Subtotal</span>
-                <span className="font-medium">${calculateTotal}</span>
-              </div>
-              <div className="flex justify-between">
-                <span className="text-gray-600">Shipping</span>
-                <span className="font-medium">$5.00</span>
-              </div>
-              <div className="flex justify-between">
-                <span className="text-gray-600">Discount</span>
-                <span className="font-medium text-green-600">-$0.00</span>
-              </div>
-              <div className="border-t border-gray-200 pt-4 flex justify-between text-lg font-bold">
-                <span>Total</span>
-                <span>${(parseFloat(calculateTotal) + 5.0).toFixed(2)}</span>
-              </div>
-            </div>
-
-            <h3 className="font-semibold text-gray-800 mb-4">
-              Products ({cartItems.length})
-            </h3>
-
-            <div className="space-y-4 max-h-64 overflow-y-auto pr-2">
-              {cartItems.map((item) => (
-                <div
-                  key={item.id}
-                  className="flex items-center border-b border-gray-100 pb-4"
-                >
-                  <div className="w-16 h-16 flex-shrink-0 bg-gray-100 rounded-lg flex items-center justify-center">
-                    <img
-                      src={item.image}
-                      alt={item.title}
-                      className="w-12 h-12 object-contain"
-                    />
-                  </div>
-                  <div className="ml-4 flex-1">
-                    <h4 className="font-medium text-gray-800 truncate">
-                      {item.title}
-                    </h4>
-                    <p className="text-gray-600">
-                      ${item.price.toFixed(2)} × {item.quantity}
-                    </p>
-                  </div>
-                  <div className="font-medium text-gray-800">
-                    ${(item.price * item.quantity).toFixed(2)}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
         </div>
       </div>
     </div>

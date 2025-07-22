@@ -1,10 +1,12 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
-
+import { useCart } from "./CartContext";
 const AuthContext = createContext();
 
 export function AuthProvider({ children }) {
   const [currentUser, setCurrentUser] = useState(null);
   const [loading, setLoading] = useState(true);
+
+  const { clearCart } = useCart();
 
   useEffect(() => {
     const users = JSON.parse(localStorage.getItem("users"));
@@ -57,6 +59,7 @@ export function AuthProvider({ children }) {
   const logout = () => {
     localStorage.removeItem("currentUser");
     setCurrentUser(null);
+    clearCart();
   };
 
   const signup = (username, email, password) => {
